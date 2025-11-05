@@ -9,7 +9,12 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["descuentia", "discounts", "loyalty", "marketplace"],
+  "keywords": [
+    "descuentia",
+    "discounts",
+    "loyalty",
+    "marketplace"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {

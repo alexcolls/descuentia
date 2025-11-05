@@ -17,6 +17,7 @@ import { CreatePromotionScreen } from '@screens/merchant/CreatePromotionScreen';
 import QRScannerScreen from '@screens/merchant/QRScannerScreen';
 import PromotionsListScreen from '@screens/merchant/PromotionsListScreen';
 import AnalyticsScreen from '@screens/merchant/AnalyticsScreen';
+import SubscriptionScreen from '@screens/merchant/SubscriptionScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -92,6 +93,7 @@ export const RootNavigator: React.FC = () => {
               <Stack.Screen name="QRScanner" component={QRScannerScreen} />
               <Stack.Screen name="PromotionsList" component={PromotionsListScreen} />
               <Stack.Screen name="Analytics" component={AnalyticsScreen} />
+              <Stack.Screen name="Subscription" component={SubscriptionScreen} />
             </>
           )}
         </Stack.Navigator>
