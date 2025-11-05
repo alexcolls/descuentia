@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { useAppDispatch, useAppSelector } from '@store/index';
 import { fetchPromotionById } from '@store/slices/promotionsSlice';
+import { claimCoupon } from '@store/slices/couponsSlice';
 import { formatDistance } from '@services/location';
 import { Button } from '@components/shared/Button';
 
@@ -32,6 +33,8 @@ export const PromotionDetailsScreen: React.FC<PromotionDetailsScreenProps> = ({
   const { promotionId } = route.params;
   
   const { promotions, isLoading } = useAppSelector((state) => state.promotions);
+  const { user } = useAppSelector((state) => state.auth);
+  const { isLoading: isClaiming } = useAppSelector((state) => state.coupons);
   const [promotion, setPromotion] = useState(
     promotions.find((p) => p.id === promotionId)
   );
@@ -48,9 +51,32 @@ export const PromotionDetailsScreen: React.FC<PromotionDetailsScreenProps> = ({
     }
   }, [promotionId]);
 
-  const handleClaimOffer = () => {
-    // TODO: Navigate to coupon claiming screen
-    Alert.alert('Coming Soon', 'Coupon claiming feature will be available soon!');
+  const handleClaimOffer = async () => {
+    if (!user) {
+      Alert.alert('Error', 'You must be logged in to claim offers');
+      return;
+    }
+
+    try {
+      const result = await dispatch(
+        claimCoupon({ promotionId, userId: user.id })
+      ).unwrap();
+
+      Alert.alert(
+        'Success!',
+        'Coupon claimed successfully! You can view it in the Coupons tab.',
+        [
+          {
+            text: 'View Coupon',
+            onPress: () =>
+              navigation.navigate('CouponDetail', { couponId: result.id }),
+          },
+          { text: 'OK', style: 'cancel' },
+        ]
+      );
+    } catch (error: any) {
+      Alert.alert('Error', error || 'Failed to claim coupon');
+    }
   };
 
   const handleGetDirections = () => {
@@ -254,9 +280,10 @@ export const PromotionDetailsScreen: React.FC<PromotionDetailsScreenProps> = ({
           {/* Action Buttons */}
           <View className="space-y-3">
             <Button
-              title="Claim This Offer"
+              title={isClaiming ? 'Claiming...' : 'Claim This Offer'}
               onPress={handleClaimOffer}
               size="large"
+              disabled={isClaiming}
             />
             
             <Button

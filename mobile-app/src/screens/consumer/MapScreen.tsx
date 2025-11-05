@@ -134,17 +134,26 @@ export const MapScreen: React.FC<MapScreenProps> = ({ navigation }) => {
             </Text>
           </View>
           
-          <TouchableOpacity
-            onPress={handleRefresh}
-            className="bg-primary p-3 rounded-full"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <ActivityIndicator size="small" color="#FFFFFF" />
-            ) : (
-              <Text className="text-white">🔄</Text>
-            )}
-          </TouchableOpacity>
+          <View className="flex-row">
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Coupons')}
+              className="bg-gray-100 px-3 py-2 rounded-full mr-2"
+            >
+              <Text className="text-sm">🎫</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity
+              onPress={handleRefresh}
+              className="bg-primary p-3 rounded-full"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <ActivityIndicator size="small" color="#FFFFFF" />
+              ) : (
+                <Text className="text-white">🔄</Text>
+              )}
+            </TouchableOpacity>
+          </View>
         </View>
         
         {/* Stats */}

@@ -8,14 +8,99 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
-- Coupon claiming functionality (Phase 3)
 - Merchant dashboard (Phase 5)
+- Loyalty programs (Phase 4)
 
 ### Planned Features
-- Loyalty programs
 - Payment integration with Stripe
 - Push notifications
 - Analytics dashboard
+
+---
+
+## [0.5.0] - 2025-11-05
+
+### Added - Phase 3 Part 3: Coupon Claiming & Management 🎫
+
+#### Coupon Service (235 lines)
+- ✅ claimPromotion: Generate unique QR codes and create coupons
+- 🔐 Check for existing active coupons (prevent duplicates)
+- 🏷️ QR code format: COUPON-{promoId}-{userId}-{timestamp}-{random}
+- 📅 Auto-expiration (30 days from claim)
+- 📊 Track analytics events on claim
+- 📝 getUserCoupons: Fetch with filters (claimed/redeemed/expired)
+- 🔍 getCouponById: Single coupon with full details
+- ⏰ isCouponExpired: Check expiration status
+- 📆 getTimeUntilExpiration: Human-readable time remaining
+
+#### Coupons Redux Slice (240 lines)
+- 📦 State management for coupons (active, redeemed, selected)
+- ⚡ claimCoupon async thunk
+- 🔄 fetchUserCoupons, fetchActiveCoupons, fetchRedeemedCoupons
+- 📌 fetchCouponDetails for single coupon
+- ❌ clearSelectedCoupon, clearError actions
+- 💾 Integrated with Redux store
+
+#### CouponDetailScreen (302 lines)
+- 🖼️ Hero image with status badge (Active/Redeemed/Expired)
+- 📱 QR Code display using react-native-qrcode-svg (280px responsive)
+- 🎯 Large discount badge
+- ⏰ Countdown timer (days/hours/minutes left)
+- 📅 Claimed and redeemed timestamps
+- 📝 Full promotion description and terms
+- 🏢 Business information card
+- 📞 Tap-to-call business
+- 🧭 Get directions button
+- 👁️ Different states for active/redeemed/expired coupons
+
+#### CouponsScreen (245 lines)
+- 🃏 List view with tabs (Active / Redeemed)
+- 📄 Coupon cards with discount badges
+- ⏰ Time remaining for active coupons
+- ✅ Redemption date for used coupons
+- 🔄 Pull-to-refresh
+- 🎭 Empty states for both tabs
+- 📊 Counter in header (X active • Y redeemed)
+- 🖼️ Image thumbnails with category fallback emojis
+
+#### Promotion Claiming Integration
+- ✅ "Claim This Offer" button in PromotionDetailsScreen
+- ⏳ Loading state during claim
+- ✅ Success alert with "View Coupon" option
+- ⚠️ Error handling (duplicate, auth, network)
+- 🧭 Direct navigation to claimed coupon
+
+#### Navigation Updates
+- 🔗 Added CouponsScreen and CouponDetailScreen routes
+- 🎫 "My Coupons" button in MapScreen header
+- 📦 Seamless flow: Browse → Claim → View Coupon → Redeem
+
+#### Dependencies
+- 📦 Installed react-native-qrcode-svg for QR code generation
+- 📦 Installed react-native-svg (peer dependency)
+
+#### Features
+- Claim promotions with one tap
+- Generate unique QR codes for each coupon
+- View all coupons in organized tabs
+- Display QR codes for merchant scanning
+- Track expiration with countdown timers
+- Prevent duplicate claims
+- Analytics tracking on claims
+- Beautiful UI with status indicators
+- Smooth navigation flow
+
+**Phase 3: Consumer Core Features**: 100% COMPLETE 🎉
+- ✅ Location service with distance calculation
+- ✅ Promotions Redux slice with nearby/featured fetching
+- ✅ PromotionCard & FeaturedCarousel components
+- ✅ MapScreen with Google Maps integration
+- ✅ Custom promotion markers
+- ✅ PromotionDetailsScreen
+- ✅ Coupon claiming with QR codes
+- ✅ CouponsScreen with tabs
+- ✅ CouponDetailScreen with QR display
+- ✅ Full navigation flow
 
 ---
 

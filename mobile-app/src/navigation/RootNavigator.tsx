@@ -11,6 +11,8 @@ import { LoginScreen } from '@screens/auth/LoginScreen';
 import { SignupScreen } from '@screens/auth/SignupScreen';
 import { MapScreen } from '@screens/consumer/MapScreen';
 import { PromotionDetailsScreen } from '@screens/consumer/PromotionDetailsScreen';
+import { CouponsScreen } from '@screens/consumer/CouponsScreen';
+import { CouponDetailScreen } from '@screens/consumer/CouponDetailScreen';
 
 // Placeholder screens (to be created later)
 const MerchantDashboardScreen = () => (
@@ -85,6 +87,8 @@ export const RootNavigator: React.FC = () => {
             <>
               <Stack.Screen name="Map" component={MapScreen} />
               <Stack.Screen name="PromotionDetails" component={PromotionDetailsScreen} />
+              <Stack.Screen name="Coupons" component={CouponsScreen} />
+              <Stack.Screen name="CouponDetail" component={CouponDetailScreen} />
             </>
           ) : (
             <Stack.Screen name="MerchantDashboard" component={MerchantDashboardScreen} />
