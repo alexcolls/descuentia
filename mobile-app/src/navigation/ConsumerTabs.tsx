@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MapScreen } from '@screens/consumer/MapScreen';
 import { CouponsScreen } from '@screens/consumer/CouponsScreen';
 import { ProfileScreen } from '@screens/consumer/ProfileScreen';
+import LoyaltyCardsScreen from '@screens/consumer/LoyaltyCardsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +47,18 @@ export const ConsumerTabs = () => {
           tabBarIcon: ({ focused }) => (
             <Text style={{ fontSize: 24 }}>
               {focused ? '🎫' : '🎫'}
+            </Text>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="LoyaltyTab"
+        component={LoyaltyCardsScreen}
+        options={{
+          tabBarLabel: 'Loyalty',
+          tabBarIcon: ({ focused }) => (
+            <Text style={{ fontSize: 24 }}>
+              {focused ? '💳' : '💳'}
             </Text>
           ),
         }}

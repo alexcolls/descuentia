@@ -9,7 +9,12 @@
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["descuentia", "discounts", "loyalty", "marketplace"],
+  "keywords": [
+    "descuentia",
+    "discounts",
+    "loyalty",
+    "marketplace"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
@@ -17,6 +22,7 @@
     "@supabase/supabase-js": "^2.79.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
+    "expo-server-sdk": "^4.0.0",
     "express": "^5.1.0",
     "stripe": "^19.2.1"
   },

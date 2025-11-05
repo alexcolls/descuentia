@@ -254,9 +254,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
           <View className="flex-row flex-wrap">
             {/* Create Promotion */}
             <TouchableOpacity
-              onPress={() =>
-                Alert.alert('Coming Soon', 'Create promotion feature coming soon!')
-              }
+              onPress={() => navigation.navigate('CreatePromotion')}
               className="w-1/2 p-2"
             >
               <View className="bg-primary rounded-2xl p-6 items-center">
@@ -269,9 +267,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
 
             {/* Scan QR */}
             <TouchableOpacity
-              onPress={() =>
-                Alert.alert('Coming Soon', 'QR scanner coming soon!')
-              }
+              onPress={() => navigation.navigate('QRScanner')}
               className="w-1/2 p-2"
             >
               <View className="bg-green-500 rounded-2xl p-6 items-center">
@@ -284,9 +280,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
 
             {/* My Promotions */}
             <TouchableOpacity
-              onPress={() =>
-                Alert.alert('Coming Soon', 'Promotions list coming soon!')
-              }
+              onPress={() => navigation.navigate('PromotionsList')}
               className="w-1/2 p-2"
             >
               <View className="bg-blue-500 rounded-2xl p-6 items-center">
@@ -299,9 +293,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
 
             {/* Analytics */}
             <TouchableOpacity
-              onPress={() =>
-                Alert.alert('Coming Soon', 'Analytics coming soon!')
-              }
+              onPress={() => navigation.navigate('Analytics')}
               className="w-1/2 p-2"
             >
               <View className="bg-purple-500 rounded-2xl p-6 items-center">
@@ -312,6 +304,62 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
               </View>
             </TouchableOpacity>
           </View>
+        </View>
+
+        {/* Subscription */}
+        <View className="px-4 mb-6">
+          <Text className="text-lg font-bold text-gray-900 mb-3">
+            Subscription
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Subscription')}
+            className="bg-white rounded-2xl shadow-md p-4 flex-row items-center justify-between"
+          >
+            <View className="flex-1">
+              <Text className="text-gray-900 font-semibold text-base mb-1">
+                {profile?.subscription_plan === 'free' ? 'Free Plan' : 
+                 profile?.subscription_plan === 'basic' ? 'Basic Plan' :
+                 profile?.subscription_plan === 'pro' ? 'Pro Plan' :
+                 profile?.subscription_plan === 'premium' ? 'Premium Plan' : 'Free Plan'}
+              </Text>
+              <Text className="text-gray-600 text-sm">
+                {profile?.subscription_plan === 'free' ?
+                  'Upgrade to unlock more features' :
+                  'Manage your subscription'}
+              </Text>
+            </View>
+            <View className="flex-row items-center">
+              {profile?.subscription_plan === 'free' && (
+                <View className="bg-emerald-100 px-3 py-1 rounded-full mr-3">
+                  <Text className="text-emerald-700 text-xs font-semibold">UPGRADE</Text>
+                </View>
+              )}
+              <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        {/* Loyalty Program */}
+        <View className="px-4 mb-6">
+          <Text className="text-lg font-bold text-gray-900 mb-3">
+            Loyalty Program
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('LoyaltyProgram')}
+            className="bg-white rounded-2xl shadow-md p-4 flex-row items-center justify-between"
+          >
+            <View className="flex-1">
+              <Text className="text-gray-900 font-semibold text-base mb-1">
+                Manage Loyalty Rewards
+              </Text>
+              <Text className="text-gray-600 text-sm">
+                Set up points and rewards for customers
+              </Text>
+            </View>
+            <View className="flex-row items-center">
+              <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+            </View>
+          </TouchableOpacity>
         </View>
 
         {/* Recent Activity */}

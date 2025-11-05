@@ -13,6 +13,12 @@ import { PromotionDetailsScreen } from '@screens/consumer/PromotionDetailsScreen
 import { CouponDetailScreen } from '@screens/consumer/CouponDetailScreen';
 import { ConsumerTabs } from '@navigation/ConsumerTabs';
 import { DashboardScreen } from '@screens/merchant/DashboardScreen';
+import { CreatePromotionScreen } from '@screens/merchant/CreatePromotionScreen';
+import QRScannerScreen from '@screens/merchant/QRScannerScreen';
+import PromotionsListScreen from '@screens/merchant/PromotionsListScreen';
+import AnalyticsScreen from '@screens/merchant/AnalyticsScreen';
+import SubscriptionScreen from '@screens/merchant/SubscriptionScreen';
+import LoyaltyProgramScreen from '@screens/merchant/LoyaltyProgramScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -82,7 +88,15 @@ export const RootNavigator: React.FC = () => {
               <Stack.Screen name="CouponDetail" component={CouponDetailScreen} />
             </>
           ) : (
-            <Stack.Screen name="MerchantDashboard" component={DashboardScreen} />
+            <>
+              <Stack.Screen name="MerchantDashboard" component={DashboardScreen} />
+              <Stack.Screen name="CreatePromotion" component={CreatePromotionScreen} />
+              <Stack.Screen name="QRScanner" component={QRScannerScreen} />
+              <Stack.Screen name="PromotionsList" component={PromotionsListScreen} />
+              <Stack.Screen name="Analytics" component={AnalyticsScreen} />
+              <Stack.Screen name="Subscription" component={SubscriptionScreen} />
+              <Stack.Screen name="LoyaltyProgram" component={LoyaltyProgramScreen} />
+            </>
           )}
         </Stack.Navigator>
       )}
