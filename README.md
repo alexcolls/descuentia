@@ -95,7 +95,7 @@ Before starting, create accounts and obtain API keys for:
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/descuentia.git
+git clone https://github.com/quantium/descuentia.git
 cd descuentia
 
 # See PRODUCTION_PLAN.md for detailed setup instructions
@@ -148,7 +148,8 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 For questions or support:
 - **GitHub Issues**: Report bugs or request features
-- **Email**: support@descuentia.com
+- **Email**: support@descuentia.eu
+- **Website**: https://descuentia.eu
 
 ---
 

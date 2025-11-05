@@ -1157,7 +1157,7 @@ SUPABASE_ANON_KEY=your-anon-key-here
 # Your backend API URL
 API_URL=http://localhost:3000
 # For production:
-# API_URL=https://your-backend-domain.com
+# API_URL=https://api.descuentia.eu
 
 # ===================================
 # GOOGLE MAPS
@@ -1232,7 +1232,7 @@ API_URL=http://localhost:3000
 # Frontend URL (for CORS and redirects)
 FRONTEND_URL=exp://192.168.1.100:19000
 # For production:
-# FRONTEND_URL=https://your-app-url.com
+# FRONTEND_URL=https://descuentia.eu
 
 # ===================================
 # SUPABASE CONFIGURATION
