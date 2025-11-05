@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '@store/index';
 import { updateProfile, signOut } from '@store/slices/authSlice';
 import { fetchUserCoupons } from '@store/slices/couponsSlice';
 import { Button } from '@components/shared/Button';
+import { shareApp } from '@utils/share';
 
 interface ProfileScreenProps {
   navigation: any;
@@ -85,6 +86,10 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
         onPress: () => dispatch(signOut()),
       },
     ]);
+  };
+
+  const handleShareApp = async () => {
+    await shareApp(user?.id);
   };
 
   const redeemedCount = coupons.filter((c) => c.status === 'redeemed').length;
@@ -283,11 +288,22 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
 
           <TouchableOpacity
             onPress={() => Alert.alert('Coming Soon', 'Settings coming soon!')}
-            className="flex-row items-center justify-between p-4"
+            className="flex-row items-center justify-between p-4 border-b border-gray-200"
           >
             <View className="flex-row items-center">
               <Text className="text-2xl mr-3">⚙️</Text>
               <Text className="text-gray-900 font-medium">Settings</Text>
+            </View>
+            <Text className="text-gray-400">›</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={handleShareApp}
+            className="flex-row items-center justify-between p-4"
+          >
+            <View className="flex-row items-center">
+              <Text className="text-2xl mr-3">📤</Text>
+              <Text className="text-gray-900 font-medium">Share App</Text>
             </View>
             <Text className="text-gray-400">›</Text>
           </TouchableOpacity>

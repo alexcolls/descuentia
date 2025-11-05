@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '@store/index';
 import { fetchCouponDetails, clearSelectedCoupon } from '@store/slices/couponsSlice';
 import { getTimeUntilExpiration, isCouponExpired } from '@services/coupon';
 import { Button } from '@components/shared/Button';
+import { shareCoupon } from '@utils/share';
 
 const { width } = Dimensions.get('window');
 const QR_SIZE = Math.min(width * 0.7, 280);
@@ -37,6 +38,7 @@ export const CouponDetailScreen: React.FC<CouponDetailScreenProps> = ({
   const { couponId } = route.params;
   
   const { selectedCoupon, isLoading } = useAppSelector((state) => state.coupons);
+  const { user } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(fetchCouponDetails(couponId));
@@ -60,6 +62,17 @@ export const CouponDetailScreen: React.FC<CouponDetailScreenProps> = ({
     } else {
       Alert.alert('Not Available', 'Phone number not available');
     }
+  };
+
+  const handleShare = async () => {
+    if (!selectedCoupon) return;
+
+    await shareCoupon(
+      selectedCoupon.qr_code,
+      selectedCoupon.promotion.title,
+      selectedCoupon.promotion.business.name,
+      user?.id
+    );
   };
 
   const formatDate = (dateString: string) => {
@@ -128,6 +141,16 @@ export const CouponDetailScreen: React.FC<CouponDetailScreenProps> = ({
           >
             <Text className="text-gray-800 font-bold">←</Text>
           </TouchableOpacity>
+
+          {/* Share Button */}
+          {selectedCoupon.status === 'claimed' && !isExpired && (
+            <TouchableOpacity
+              onPress={handleShare}
+              className="absolute top-4 left-16 bg-white p-3 rounded-full shadow-lg"
+            >
+              <Text className="text-gray-800 font-bold">📤</Text>
+            </TouchableOpacity>
+          )}
 
           {/* Status Badge */}
           <View
@@ -286,14 +309,26 @@ export const CouponDetailScreen: React.FC<CouponDetailScreenProps> = ({
             </View>
           </View>
 
-          {/* Action Button */}
+          {/* Action Buttons */}
           {selectedCoupon.status === 'claimed' && !isExpired && (
-            <Button
-              title="Get Directions"
-              onPress={handleGetDirections}
-              variant="outline"
-              size="large"
-            />
+            <View className="flex-row space-x-3">
+              <View className="flex-1 mr-2">
+                <Button
+                  title="Get Directions"
+                  onPress={handleGetDirections}
+                  variant="outline"
+                  size="large"
+                />
+              </View>
+              <View className="flex-1 ml-2">
+                <Button
+                  title="Share"
+                  onPress={handleShare}
+                  variant="outline"
+                  size="large"
+                />
+              </View>
+            </View>
           )}
         </View>
       </ScrollView>

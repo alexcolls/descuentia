@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
-- Promotion sharing (Phase 4)
 - Merchant dashboard (Phase 5)
 
 ### Planned Features
@@ -16,6 +15,79 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Payment integration with Stripe
 - Push notifications
 - Analytics dashboard
+
+---
+
+## [0.8.0] - 2025-11-05
+
+### Added - Phase 4 Complete: Sharing & Viral Growth 📤
+
+#### Share Utilities (147 lines)
+- 📤 sharePromotion: Share deals via native share sheet
+  * Creates shareable deep link (descuentia.eu/promo/{id})
+  * Beautiful message with emoji and details
+  * Works with all native share targets (SMS, WhatsApp, etc.)
+  * Analytics tracking
+- 🎫 shareCoupon: Share claimed coupons
+  * Encourages friends to download app
+  * Tracks sharing activity
+- 📱 shareApp: Share Descuentia itself
+  * Mission-focused message (cancer research)
+  * Download link included
+- 📋 copyPromotionLink: Copy link to clipboard
+  * Quick share via paste
+  * Clipboard API integration
+  * Success toast notification
+
+#### Integration Points
+- 🎯 PromotionDetailsScreen:
+  * Share button in header (top-left corner)
+  * "Share Deal" button in actions
+  * Native share sheet opens
+- 🎫 CouponDetailScreen:
+  * Share button in header (active coupons only)
+  * "Share" button alongside directions
+  * Encourages viral growth
+- 👤 ProfileScreen:
+  * "Share App" in quick actions
+  * Easy access to spread the word
+
+#### Analytics Integration
+- 📈 Track every share action:
+  * promotion shares
+  * coupon shares
+  * app shares
+  * copy link actions
+- 📊 Record sharing platform (iOS activityType)
+- 🔗 Link share data to promotions and users
+
+#### Features
+- One-tap sharing to any app
+- Deep linking support
+- Beautiful share messages with emojis
+- Mission-focused messaging
+- Viral growth mechanics
+- Analytics for all shares
+- Copy to clipboard option
+- iOS and Android support
+
+#### Dependencies
+- 📦 @react-native-clipboard/clipboard for copy functionality
+- 📦 React Native Share API (built-in)
+
+**Phase 4: Consumer Secondary Features** 🎉 100% COMPLETE!
+- ✅ Search and filters
+- ✅ Favorites/bookmarks  
+- ✅ User profile management
+- ✅ Tab navigation
+- ✅ Promotion sharing
+
+**Complete Consumer Experience** 🚀
+- Discovery: Map, search, filters
+- Engagement: Claim, redeem, QR codes
+- Management: Profile, coupons, favorites
+- Growth: Sharing, viral mechanics
+- Navigation: Beautiful tabs, smooth flow
 
 ---
 

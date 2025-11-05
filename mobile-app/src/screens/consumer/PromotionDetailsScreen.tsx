@@ -15,6 +15,7 @@ import { fetchPromotionById } from '@store/slices/promotionsSlice';
 import { claimCoupon } from '@store/slices/couponsSlice';
 import { formatDistance } from '@services/location';
 import { Button } from '@components/shared/Button';
+import { sharePromotion } from '@utils/share';
 
 interface PromotionDetailsScreenProps {
   navigation: any;
@@ -95,6 +96,25 @@ export const PromotionDetailsScreen: React.FC<PromotionDetailsScreenProps> = ({
     }
   };
 
+  const handleShare = async () => {
+    if (!promotion) return;
+
+    const discountText =
+      promotion.discount_type === 'percentage'
+        ? `-${promotion.discount_value}%`
+        : promotion.discount_type === 'fixed'
+        ? `-€${promotion.discount_value}`
+        : promotion.special_offer_text || 'Special Offer';
+
+    await sharePromotion(
+      promotion.id,
+      promotion.title,
+      promotion.business.name,
+      discountText,
+      user?.id
+    );
+  };
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -162,6 +182,14 @@ export const PromotionDetailsScreen: React.FC<PromotionDetailsScreenProps> = ({
             className="absolute top-4 left-4 bg-white p-3 rounded-full shadow-lg"
           >
             <Text className="text-gray-800 font-bold">←</Text>
+          </TouchableOpacity>
+
+          {/* Share Button */}
+          <TouchableOpacity
+            onPress={handleShare}
+            className="absolute top-4 left-16 bg-white p-3 rounded-full shadow-lg"
+          >
+            <Text className="text-gray-800 font-bold">📤</Text>
           </TouchableOpacity>
 
           {/* Discount Badge */}
@@ -286,12 +314,24 @@ export const PromotionDetailsScreen: React.FC<PromotionDetailsScreenProps> = ({
               disabled={isClaiming}
             />
             
-            <Button
-              title="Get Directions"
-              onPress={handleGetDirections}
-              variant="outline"
-              size="large"
-            />
+            <View className="flex-row space-x-3">
+              <View className="flex-1 mr-2">
+                <Button
+                  title="Get Directions"
+                  onPress={handleGetDirections}
+                  variant="outline"
+                  size="large"
+                />
+              </View>
+              <View className="flex-1 ml-2">
+                <Button
+                  title="Share Deal"
+                  onPress={handleShare}
+                  variant="outline"
+                  size="large"
+                />
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
