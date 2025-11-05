@@ -8,13 +8,76 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
-- Merchant dashboard (Phase 5)
+- Merchant promotion management (Phase 5)
+- QR code scanning (Phase 5)
 
 ### Planned Features
 - Loyalty programs
 - Payment integration with Stripe
 - Push notifications
-- Analytics dashboard
+- Advanced analytics
+
+---
+
+## [0.9.0] - 2025-11-05
+
+### Added - Phase 5 Part 1: Merchant Dashboard 📊
+
+#### DashboardScreen (344 lines)
+- 🏛️ Comprehensive merchant dashboard
+- 📊 Stats grid with 6 key metrics:
+  * Active promotions count
+  * Total redemptions
+  * Today's redemptions
+  * Total views
+  * Total claims
+  * Total shares
+- 👋 Personalized header with business name
+- 🔄 Pull-to-refresh functionality
+- ⚡ Real-time data from Supabase
+
+#### Quick Actions Grid
+- ➕ New Promotion (placeholder)
+- 📷 Scan QR Code (placeholder)
+- 🎯 My Promotions (placeholder)
+- 📊 Analytics (placeholder)
+- 🎨 Beautiful colored cards
+- 💆 Touch-optimized buttons
+
+#### Business Integration
+- 🏪 Automatically loads merchant's business
+- 🛡️ Handles missing business gracefully
+- 📍 Links to business setup if needed
+- 🔗 Associates all stats with business ID
+
+#### Analytics & Stats
+- 📊 Active promotions count
+- ✅ Total redemptions tracking
+- 📅 Today's redemptions (time-filtered)
+- 👀 View count from analytics_events
+- 🎫 Claim count from analytics_events
+- 📤 Share count from analytics_events
+- 🔍 Complex queries with joins
+
+#### UI Features
+- 🎨 Color-coded stats (primary, green, orange, blue, purple)
+- 📋 Recent activity section (empty state)
+- 💡 Pro tips section with advice
+- 📦 Grid layout for quick actions
+- 📱 Responsive design
+- 🔄 Loading states
+
+#### Navigation Updates
+- 🧭 Merchant dashboard as main screen
+- 🔗 Integrated into RootNavigator
+- 🔀 Role-based routing (merchant vs consumer)
+
+**Phase 5 Progress**: 20% Complete 🚀
+- ✅ Dashboard with stats
+- 🔄 Promotion creation
+- 🔄 QR code scanner
+- 🔄 Promotions list
+- 🔄 Analytics details
 
 ---
 

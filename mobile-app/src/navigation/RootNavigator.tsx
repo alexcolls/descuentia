@@ -12,14 +12,7 @@ import { SignupScreen } from '@screens/auth/SignupScreen';
 import { PromotionDetailsScreen } from '@screens/consumer/PromotionDetailsScreen';
 import { CouponDetailScreen } from '@screens/consumer/CouponDetailScreen';
 import { ConsumerTabs } from '@navigation/ConsumerTabs';
-
-// Placeholder screens (to be created later)
-const MerchantDashboardScreen = () => (
-  <View className="flex-1 items-center justify-center bg-white">
-    <Text className="text-2xl font-bold text-primary">Merchant Dashboard</Text>
-    <Text className="text-gray-600 mt-2">Dashboard coming soon!</Text>
-  </View>
-);
+import { DashboardScreen } from '@screens/merchant/DashboardScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -89,7 +82,7 @@ export const RootNavigator: React.FC = () => {
               <Stack.Screen name="CouponDetail" component={CouponDetailScreen} />
             </>
           ) : (
-            <Stack.Screen name="MerchantDashboard" component={MerchantDashboardScreen} />
+            <Stack.Screen name="MerchantDashboard" component={DashboardScreen} />
           )}
         </Stack.Navigator>
       )}
