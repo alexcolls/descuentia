@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import authReducer from './slices/authSlice';
+import promotionsReducer from './slices/promotionsSlice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    promotions: promotionsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
