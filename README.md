@@ -107,7 +107,7 @@ cd descuentia
 
 - **[PRODUCTION_PLAN.md](./PRODUCTION_PLAN.md)** - Complete production plan and development roadmap
 - **[CHANGELOG.md](./CHANGELOG.md)** - Version history and release notes
-- **[LICENSE](./LICENSE)** - MIT License
+- **[LICENSE](./LICENSE)** - Commercial License
 
 ---
 
@@ -127,20 +127,26 @@ See [PRODUCTION_PLAN.md](./PRODUCTION_PLAN.md) for:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please:
+This is proprietary software. For contribution inquiries or collaboration opportunities, please contact us:
 
-1. Fork the repository
-2. Create a feature branch
-3. Use emoji-prefixed commits (✨ feat:, 🐛 fix:, etc.)
-4. Submit a Pull Request
+- **Email**: support@descuentia.eu
+- **Website**: https://descuentia.eu
 
-See our commit convention in [PRODUCTION_PLAN.md](./PRODUCTION_PLAN.md#git-commit-convention).
+All contributions must be made under a separate written agreement with Descuentia.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+This project is proprietary software protected by copyright law. All rights reserved.
+
+This software and associated documentation are the proprietary and confidential information of Descuentia. Unauthorized copying, modification, distribution, or use of this software, via any medium, is strictly prohibited without the express written permission of Descuentia.
+
+For licensing inquiries, please contact:
+- **Email**: support@descuentia.eu
+- **Website**: https://descuentia.eu
+
+See the [LICENSE](./LICENSE) file for full terms and conditions.
 
 ---
 
