@@ -9,13 +9,117 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### In Progress
 - Merchant promotion management (Phase 5)
-- QR code scanning (Phase 5)
+- Analytics screen (Phase 5)
 
 ### Planned Features
 - Loyalty programs
 - Payment integration with Stripe
 - Push notifications
 - Advanced analytics
+
+---
+
+## [0.9.1] - 2025-11-05
+
+### Added - Phase 5 Part 3: QR Code Scanner 📷
+
+#### QRScannerScreen (341 lines)
+- 📷 Full-screen camera view with QR scanning
+- 🎯 Beautiful scanning frame with corner decorations
+- ✨ Real-time QR code detection
+- 🔍 Preview modal before redemption:
+  * Shows coupon details
+  * Displays customer information
+  * Shows discount amount
+  * Status badge (ready/expired/redeemed)
+- ✅ Confirmation flow: scan → preview → confirm → redeem
+- 🛡️ Business ownership verification
+- ⏰ Expiration validation
+- 🚫 Duplicate redemption prevention
+- 📊 Automatic stats updates on redemption
+- 🎨 Professional UI with gradient overlays
+
+#### Redemption Service (286 lines)
+- 🔐 redeemCoupon function:
+  * Validates coupon code format
+  * Verifies business ownership
+  * Checks coupon status (active/redeemed/expired)
+  * Validates expiration date
+  * Updates coupon status atomically
+  * Increments promotion redemption count
+  * Returns detailed result with customer info
+- 👀 getCouponDetails function:
+  * Preview coupon before redemption
+  * Non-destructive validation
+  * Shows customer and promotion data
+- ✅ validateCouponCode helper
+- 🔒 Secure business-scoped operations
+
+#### Database Updates
+- 🗄️ increment_promotion_redemptions function:
+  * Atomic counter increment
+  * Called on successful redemption
+  * Security definer for permissions
+  * Handles null values gracefully
+
+#### Camera Permissions
+- 📱 iOS: NSCameraUsageDescription in Info.plist
+- 🤖 Android: CAMERA permission in manifest
+- 🔌 expo-camera plugin configuration
+- 🙏 Permission request flow with explanation
+- 🎨 Beautiful permission denied screen
+
+#### Navigation Integration
+- 🧭 QRScanner route in RootNavigator
+- 🔗 Wired to Dashboard "Scan QR" button
+- ⚡ Smooth navigation flow
+- 📲 Full-screen experience
+
+#### User Experience
+- 📸 Instant QR detection
+- 🎯 Visual feedback with corner animations
+- 📋 Detailed preview with all coupon info
+- ✅ Success/error messages with emojis
+- 🔄 "Scan Another" flow for multiple redemptions
+- 💬 Clear instructions and help text
+- 🎨 Dark overlay with centered frame
+- ⚡ Loading states during processing
+
+#### Security Features
+- 🔐 Business ownership validation
+- 🛡️ Coupon status verification
+- ⏰ Expiration checks
+- 🚫 Double-redemption prevention
+- 🔒 Row Level Security integration
+- 🎫 Unique coupon code validation
+
+#### Error Handling
+- ❌ Invalid coupon format detection
+- 🚫 Wrong business error
+- ⏰ Expiration warnings
+- 🔄 Already redeemed messages
+- 📡 Network error recovery
+- 🎨 User-friendly error messages
+
+#### Dependencies
+- 📦 expo-camera for camera access
+- 📦 expo-barcode-scanner for QR detection
+- 🔗 Supabase for data validation
+- 🎯 Redux for user/business context
+
+**Phase 5 Progress**: 60% Complete 🚀
+- ✅ Dashboard with stats (20%)
+- ✅ Promotion creation (40%)
+- ✅ QR code scanner (60%)
+- 🔄 Promotions list (80%)
+- 🔄 Analytics details (100%)
+
+**Merchant Features Status**:
+- ✅ View dashboard and metrics
+- ✅ Create all types of promotions
+- ✅ Scan and redeem customer coupons
+- 🔄 Manage existing promotions
+- 🔄 View detailed analytics
 
 ---
 

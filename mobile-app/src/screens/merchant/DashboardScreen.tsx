@@ -267,9 +267,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
 
             {/* Scan QR */}
             <TouchableOpacity
-              onPress={() =>
-                Alert.alert('Coming Soon', 'QR scanner coming soon!')
-              }
+              onPress={() => navigation.navigate('QRScanner')}
               className="w-1/2 p-2"
             >
               <View className="bg-green-500 rounded-2xl p-6 items-center">
