@@ -280,9 +280,7 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
 
             {/* My Promotions */}
             <TouchableOpacity
-              onPress={() =>
-                Alert.alert('Coming Soon', 'Promotions list coming soon!')
-              }
+              onPress={() => navigation.navigate('PromotionsList')}
               className="w-1/2 p-2"
             >
               <View className="bg-blue-500 rounded-2xl p-6 items-center">

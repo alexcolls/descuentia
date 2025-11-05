@@ -8,7 +8,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
-- Merchant promotion management (Phase 5)
 - Analytics screen (Phase 5)
 
 ### Planned Features
@@ -16,6 +15,122 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Payment integration with Stripe
 - Push notifications
 - Advanced analytics
+
+---
+
+## [0.9.2] - 2025-11-05
+
+### Added - Phase 5 Part 4: Promotions Management 🎯
+
+#### PromotionsListScreen (337 lines)
+- 📋 Complete promotions list with cards view
+- 🅰️ Filter tabs: All, Active, Paused, Expired
+- 💡 Beautiful promotion cards showing:
+  * Status badge (active/paused/expired with colors)
+  * Featured badge (yellow star)
+  * Title and description
+  * Discount display (percentage/fixed/special)
+  * Campaign type (Always On/Time Limited/Weekly Special)
+  * Visibility radius
+  * Redemption count
+  * Creation date
+- 🔄 Pull-to-refresh
+- 🎯 Header with total/filtered counts
+- ➕ Floating action button to create new promotion
+
+#### Action Buttons (per promotion)
+- ⏸️ Pause/Activate toggle:
+  * One-tap status change
+  * Immediate UI update
+  * Success confirmation
+- ✏️ Edit button (placeholder for future)
+- 🗑️ Delete with confirmation:
+  * Soft delete (sets status to expired)
+  * Confirmation dialog
+  * Prevents accidental deletion
+
+#### Promotions Service (227 lines)
+- 📋 getBusinessPromotions:
+  * Fetches all promotions for business
+  * Ordered by creation date (newest first)
+  * Automatic filtering by business_id
+- 📈 getPromotionStats:
+  * Views, claims, shares from analytics_events
+  * Redemptions count from coupons
+  * Aggregated metrics per promotion
+- ⏯ togglePromotionStatus:
+  * Switch between active/paused
+  * Returns new status
+  * Database transaction
+- 🗑️ deletePromotion:
+  * Soft delete by setting status to expired
+  * Preserves data for analytics
+  * Prevents coupon issues
+- ✏️ updatePromotion:
+  * Partial updates support
+  * Type-safe operations
+  * Validation included
+
+#### Helper Functions
+- ✅ isPromotionExpired:
+  * Checks time_based campaigns
+  * Compares end_date with current date
+  * Returns boolean
+- 🎨 getPromotionDisplayStatus:
+  * Returns status, color, and label
+  * Handles expired campaigns automatically
+  * Color-coded: green (active), orange (paused), gray (expired)
+- 🏷️ formatCampaignType:
+  * User-friendly type names
+  * "Always On", "Time Limited", "Weekly Special"
+- 💵 formatDiscount:
+  * "25% OFF", "€5 OFF", "SPECIAL OFFER"
+  * Handles all discount types
+  * Clean display formatting
+
+#### Navigation Integration
+- 🧭 PromotionsList route in RootNavigator
+- 🔗 Wired to Dashboard "My Promotions" button
+- ➕ Direct link to CreatePromotion from empty state
+- ⚡ Smooth transitions
+
+#### Empty States
+- 🎯 Empty list with call-to-action
+- 💭 Filter-specific empty messages
+- ➕ "Create Promotion" button in empty state
+- 🎨 Beautiful icon and messaging
+
+#### User Experience
+- 📊 Real-time data updates
+- 🔄 Instant refresh on changes
+- ⚡ Loading states for async operations
+- ✅ Success/error messages with emojis
+- 🎨 Color-coded status indicators
+- 📱 Mobile-optimized card layout
+- 👆 Touch-friendly buttons
+- 📄 Scrollable list with proper spacing
+
+#### Data Management
+- 💎 Automatic business scoping
+- 📅 Date formatting and display
+- 🔢 Count tracking (filtered vs total)
+- 📋 Efficient querying (single fetch)
+- 🔄 Optimistic UI updates
+
+**Phase 5 Progress**: 80% Complete 🚀
+- ✅ Dashboard with stats (20%)
+- ✅ Promotion creation (40%)
+- ✅ QR code scanner (60%)
+- ✅ Promotions list (80%)
+- 🔄 Analytics details (100%)
+
+**Merchant Features Status**:
+- ✅ View dashboard and metrics
+- ✅ Create all types of promotions
+- ✅ Scan and redeem customer coupons
+- ✅ View and manage all promotions
+- ✅ Pause/activate/delete promotions
+- 🔄 View detailed analytics (final feature)
 
 ---
 
