@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/page": "app/page.js",
+  "/(marketing)/legal/licenses/page": "app/(marketing)/legal/licenses/page.js",
+  "/(marketing)/legal/privacy/page": "app/(marketing)/legal/privacy/page.js",
+  "/(marketing)/page": "app/(marketing)/page.js",
+  "/(marketing)/legal/terms/page": "app/(marketing)/legal/terms/page.js"
+}

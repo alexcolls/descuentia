@@ -1,0 +1,57 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-2512568d1d29c4e9.js",
+      "static/chunks/fd9d1056-4a917af64af6b262.js",
+      "static/chunks/23-564dff0a59655339.js",
+      "static/chunks/main-app-fc0fa0f05c2c1720.js",
+      "static/chunks/app/_not-found/page-b0486616258356d1.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-2512568d1d29c4e9.js",
+      "static/chunks/fd9d1056-4a917af64af6b262.js",
+      "static/chunks/23-564dff0a59655339.js",
+      "static/chunks/main-app-fc0fa0f05c2c1720.js",
+      "static/css/87ec0b78a10083f7.css",
+      "static/chunks/app/layout-604a764917e842a4.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-2512568d1d29c4e9.js",
+      "static/chunks/fd9d1056-4a917af64af6b262.js",
+      "static/chunks/23-564dff0a59655339.js",
+      "static/chunks/main-app-fc0fa0f05c2c1720.js",
+      "static/chunks/48-37be41d2d5f278bf.js",
+      "static/chunks/998-e454cc8966b739ba.js",
+      "static/chunks/app/page-71921f28d7c73057.js"
+    ],
+    "/(marketing)/legal/licenses/page": [
+      "static/chunks/webpack-2512568d1d29c4e9.js",
+      "static/chunks/fd9d1056-4a917af64af6b262.js",
+      "static/chunks/23-564dff0a59655339.js",
+      "static/chunks/main-app-fc0fa0f05c2c1720.js",
+      "static/chunks/app/(marketing)/legal/licenses/page-bff4067540d2af00.js"
+    ],
+    "/(marketing)/layout": [
+      "static/chunks/webpack-2512568d1d29c4e9.js",
+      "static/chunks/fd9d1056-4a917af64af6b262.js",
+      "static/chunks/23-564dff0a59655339.js",
+      "static/chunks/main-app-fc0fa0f05c2c1720.js",
+      "static/chunks/48-37be41d2d5f278bf.js",
+      "static/chunks/app/(marketing)/layout-973635656008c516.js"
+    ],
+    "/(marketing)/legal/privacy/page": [
+      "static/chunks/webpack-2512568d1d29c4e9.js",
+      "static/chunks/fd9d1056-4a917af64af6b262.js",
+      "static/chunks/23-564dff0a59655339.js",
+      "static/chunks/main-app-fc0fa0f05c2c1720.js",
+      "static/chunks/app/(marketing)/legal/privacy/page-b912c53979970bcc.js"
+    ],
+    "/(marketing)/legal/terms/page": [
+      "static/chunks/webpack-2512568d1d29c4e9.js",
+      "static/chunks/fd9d1056-4a917af64af6b262.js",
+      "static/chunks/23-564dff0a59655339.js",
+      "static/chunks/main-app-fc0fa0f05c2c1720.js",
+      "static/chunks/app/(marketing)/legal/terms/page-e8b5dbd52fb203f0.js"
+    ]
+  }
+}

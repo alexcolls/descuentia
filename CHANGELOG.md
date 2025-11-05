@@ -8,13 +8,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
-- Database schema implementation in Supabase
-- Authentication system setup
+- Consumer map-based interface (Phase 3)
+- Merchant dashboard (Phase 5)
 
 ### Planned Features
-- Consumer map-based interface
-- Merchant dashboard
+- Promotions and coupons functionality
+- Loyalty programs
 - Payment integration with Stripe
+- Push notifications
+- Analytics dashboard
+
+---
+
+## [0.3.0] - 2025-11-05
+
+### Added - Phase 2: Authentication Complete ✅
+
+#### Navigation & App Integration
+- 🧭 RootNavigator with auth flow switching
+- 🔄 Automatic session checking on app launch
+- 👂 Real-time auth state listener (Supabase)
+- 🔐 Role-based navigation (consumer vs merchant)
+- ⚡ Loading screen during session check
+- 📱 App.tsx integrated with Redux Provider
+- 🎯 Placeholder screens for Consumer and Merchant
+
+#### Backend Auth Middleware
+- 🛡️ JWT token verification middleware
+- 👤 User authentication from bearer tokens
+- 🎭 Role-based access control (RBAC)
+- 🔒 Protected route examples (/api/profile)
+- 🏪 Merchant-only route examples (/api/merchant/dashboard)
+- ⚙️ Optional auth middleware for public routes
+- 📝 TypeScript Request extension with user data
+
+#### Features
+- Auto-redirect to appropriate screen based on role
+- Session persistence across app restarts
+- Token refresh handling
+- Sign out clears all auth state
+- Backend validates JWT with Supabase
+- Role enforcement at API level
+
+**Phase 2 Status**: 100% Complete 🎉
+- ✅ Database schema (10 tables with RLS)
+- ✅ Supabase client configuration
+- ✅ Redux auth state management
+- ✅ Login & Signup screens
+- ✅ Navigation setup
+- ✅ Backend auth middleware
 
 ---
 

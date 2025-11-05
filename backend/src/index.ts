@@ -26,15 +26,36 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
+// Import middleware
+import { authenticateUser, requireMerchant } from './middleware/auth.middleware';
+
 // API routes
 app.get('/api', (_req: Request, res: Response) => {
   res.status(200).json({
     message: 'Welcome to Descuentia API',
-    version: '0.1.0',
+    version: '0.2.0',
     endpoints: {
       health: '/health',
       api: '/api',
+      profile: '/api/profile (protected)',
+      merchantDashboard: '/api/merchant/dashboard (merchant only)',
     },
+  });
+});
+
+// Protected route example - requires authentication
+app.get('/api/profile', authenticateUser, (req: Request, res: Response) => {
+  res.status(200).json({
+    message: 'Profile data',
+    user: req.user,
+  });
+});
+
+// Merchant-only route example
+app.get('/api/merchant/dashboard', authenticateUser, requireMerchant, (req: Request, res: Response) => {
+  res.status(200).json({
+    message: 'Merchant dashboard data',
+    merchantId: req.user?.id,
   });
 });
 
