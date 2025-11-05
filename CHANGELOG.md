@@ -8,15 +8,79 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
-- Consumer map-based interface (Phase 3)
+- Coupon claiming functionality (Phase 3)
 - Merchant dashboard (Phase 5)
 
 ### Planned Features
-- Promotions and coupons functionality
 - Loyalty programs
 - Payment integration with Stripe
 - Push notifications
 - Analytics dashboard
+
+---
+
+## [0.4.0] - 2025-11-05
+
+### Added - Phase 3 Part 2: Map & Promotion Discovery 🗺️
+
+#### Map Screen (260 lines)
+- 🗺️ Google Maps integration with react-native-maps
+- 📍 Real-time user location tracking
+- 📌 Custom promotion markers with discount badges
+- 🎨 Beautiful marker design with pin shape
+- 🔄 Pull-to-refresh functionality
+- 📊 Live promotion counter in header
+- 👋 Personalized welcome header with user name
+- ⚡ Loading states and empty states
+- 🎯 Featured carousel overlay at top of map
+- 🃏 Expandable promotion cards on marker tap
+- 📱 Smooth animations and transitions
+- 🌍 Fallback to Madrid coordinates when location unavailable
+- 🔐 Location permission handling with friendly alerts
+
+#### Promotion Details Screen (273 lines)
+- 📄 Full promotion information display
+- 🖼️ Hero image with fallback emoji icons
+- 🏷️ Discount badges (percentage, fixed, special)
+- ⏰ Type indicators (Weekly Special, Limited Time, Always On)
+- 📅 Expiration date display for time-based offers
+- 📝 Description and terms & conditions
+- 🏢 Business information card (address, phone, category)
+- 📞 Tap-to-call business phone
+- 🧭 Get directions via Google Maps integration
+- 📏 Distance from user location
+- 🎯 "Claim This Offer" primary CTA
+- ← Back button navigation
+- ✨ Beautiful UI with gradient overlays
+
+#### Navigation Updates
+- 🧭 Added Map screen as consumer home
+- 🔗 Added PromotionDetails screen to stack
+- 🚀 Seamless navigation between screens
+- 📱 Proper route parameter passing
+
+#### Features
+- Interactive map with promotion discovery
+- Featured promotions carousel
+- Click markers to see promotion cards
+- Navigate to full promotion details
+- Call businesses directly from app
+- Get directions to business location
+- Beautiful empty states
+- Responsive design
+- Optimized performance
+
+**Phase 3 Map & Discovery Status**: 80% Complete 🎯
+- ✅ Location service with distance calculation
+- ✅ Promotions Redux slice with nearby/featured fetching
+- ✅ PromotionCard component
+- ✅ FeaturedCarousel component
+- ✅ MapScreen with Google Maps
+- ✅ Custom promotion markers
+- ✅ PromotionDetailsScreen
+- ✅ Navigation integration
+- 🔄 Coupon claiming (next up)
+- 🔄 Promotion filtering UI
 
 ---
 

@@ -9,15 +9,10 @@ import { View, ActivityIndicator, Text } from 'react-native';
 // Import screens
 import { LoginScreen } from '@screens/auth/LoginScreen';
 import { SignupScreen } from '@screens/auth/SignupScreen';
+import { MapScreen } from '@screens/consumer/MapScreen';
+import { PromotionDetailsScreen } from '@screens/consumer/PromotionDetailsScreen';
 
 // Placeholder screens (to be created later)
-const ConsumerHomeScreen = () => (
-  <View className="flex-1 items-center justify-center bg-white">
-    <Text className="text-2xl font-bold text-primary">Consumer Home</Text>
-    <Text className="text-gray-600 mt-2">Map screen coming soon!</Text>
-  </View>
-);
-
 const MerchantDashboardScreen = () => (
   <View className="flex-1 items-center justify-center bg-white">
     <Text className="text-2xl font-bold text-primary">Merchant Dashboard</Text>
@@ -87,7 +82,10 @@ export const RootNavigator: React.FC = () => {
           }}
         >
           {profile?.role === 'consumer' ? (
-            <Stack.Screen name="ConsumerHome" component={ConsumerHomeScreen} />
+            <>
+              <Stack.Screen name="Map" component={MapScreen} />
+              <Stack.Screen name="PromotionDetails" component={PromotionDetailsScreen} />
+            </>
           ) : (
             <Stack.Screen name="MerchantDashboard" component={MerchantDashboardScreen} />
           )}
