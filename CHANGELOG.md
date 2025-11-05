@@ -7,14 +7,55 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### In Progress
+- Database schema implementation in Supabase
+- Authentication system setup
+
 ### Planned Features
-- Mobile app initialization with Expo and TypeScript
-- Backend API setup with Express and Supabase
-- Database schema implementation
-- Authentication system
 - Consumer map-based interface
 - Merchant dashboard
 - Payment integration with Stripe
+
+---
+
+## [0.2.0] - 2025-11-05
+
+### Added - Phase 1: Project Setup & Infrastructure
+
+#### Mobile App (Expo + React Native)
+- ✨ Initialized Expo project with TypeScript template
+- 📁 Complete folder structure (screens, components, navigation, store, services, utils, types, constants)
+- 🎨 NativeWind (Tailwind CSS) configured with custom color scheme
+- 📦 Installed core dependencies:
+  - React Navigation (native, stack, drawer)
+  - Redux Toolkit with RTK Query
+  - Supabase client
+  - React Native Maps
+  - Expo modules (location, notifications, camera, barcode-scanner, image-picker)
+- ⚙️ TypeScript configured with absolute imports (@/* paths)
+- 🔧 Environment variables template (.env.sample)
+
+#### Backend API (Express + TypeScript)
+- 🚀 Express server with TypeScript
+- 📁 Complete folder structure (routes, controllers, services, middleware, types, utils, config)
+- ✅ Health check endpoint at /health
+- 🌐 CORS configured for frontend
+- 📦 Installed dependencies:
+  - Express, CORS, dotenv
+  - Supabase client (service role)
+  - Stripe SDK
+  - Google Maps Services
+- ⚙️ TypeScript configured with absolute imports
+- ✔️ Successful TypeScript compilation
+- 🔧 Environment variables template (.env.sample)
+- 🛠️ NPM scripts: dev (nodemon), build (tsc), start
+
+#### Project Infrastructure
+- 🙈 Comprehensive .gitignore (env files, node_modules, builds, IDE files)
+- 📝 Documentation updated
+- ✅ All dependencies installed with 0 vulnerabilities
+- 🔒 Security: No .env files committed
+- 🎯 Both frontend and backend ready for Phase 2 development
 
 ---
 
