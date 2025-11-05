@@ -13,6 +13,11 @@ import {
   fetchNearbyPromotions,
   fetchFeaturedPromotions,
   setUserLocation,
+  setSearchQuery,
+  toggleCategory,
+  toggleType,
+  setMaxDistance,
+  resetFilters,
   PromotionWithBusiness,
 } from '@store/slices/promotionsSlice';
 import {
@@ -22,6 +27,7 @@ import {
 } from '@services/location';
 import { FeaturedCarousel } from '@components/consumer/FeaturedCarousel';
 import { PromotionCard } from '@components/consumer/PromotionCard';
+import { SearchFilters } from '@components/consumer/SearchFilters';
 
 interface MapScreenProps {
   navigation: any;
@@ -31,8 +37,14 @@ export const MapScreen: React.FC<MapScreenProps> = ({ navigation }) => {
   const dispatch = useAppDispatch();
   const mapRef = useRef<MapView>(null);
   
-  const { promotions, featuredPromotions, userLocation, radiusKm, isLoading } =
-    useAppSelector((state) => state.promotions);
+  const {
+    filteredPromotions,
+    featuredPromotions,
+    userLocation,
+    radiusKm,
+    isLoading,
+    filters,
+  } = useAppSelector((state) => state.promotions);
   const { profile } = useAppSelector((state) => state.auth);
 
   const [currentLocation, setCurrentLocation] = useState<Coordinates | null>(null);
@@ -159,10 +171,24 @@ export const MapScreen: React.FC<MapScreenProps> = ({ navigation }) => {
         {/* Stats */}
         <View className="flex-row items-center mt-2">
           <Text className="text-sm text-gray-600">
-            📍 {promotions.length} discounts nearby
+            📍 {filteredPromotions.length} discounts nearby
           </Text>
         </View>
       </View>
+
+      {/* Search and Filters */}
+      <SearchFilters
+        searchQuery={filters.searchQuery}
+        onSearchChange={(query) => dispatch(setSearchQuery(query))}
+        selectedCategories={filters.categories}
+        onCategoryToggle={(category) => dispatch(toggleCategory(category))}
+        selectedTypes={filters.types}
+        onTypeToggle={(type) => dispatch(toggleType(type))}
+        maxDistance={filters.maxDistance}
+        onDistanceChange={(distance) => dispatch(setMaxDistance(distance))}
+        onApplyFilters={() => {}} // Filters applied automatically
+        onResetFilters={() => dispatch(resetFilters())}
+      />
 
       {/* Map Container */}
       <View className="flex-1">
@@ -178,7 +204,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({ navigation }) => {
             className="flex-1"
           >
             {/* Promotion Markers */}
-            {promotions.map((promotion) => (
+            {filteredPromotions.map((promotion) => (
               <Marker
                 key={promotion.id}
                 coordinate={{
@@ -236,7 +262,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({ navigation }) => {
         )}
 
         {/* Empty State */}
-        {!isLoading && promotions.length === 0 && currentLocation && (
+        {!isLoading && filteredPromotions.length === 0 && currentLocation && (
           <View className="absolute inset-0 items-center justify-center pointer-events-none">
             <View className="bg-white p-6 rounded-2xl shadow-lg max-w-xs">
               <Text className="text-4xl text-center mb-2">🔍</Text>

@@ -6,9 +6,16 @@ import { formatDistance } from '@services/location';
 interface PromotionCardProps {
   promotion: PromotionWithBusiness;
   onPress?: () => void;
+  isFavorite?: boolean;
+  onToggleFavorite?: () => void;
 }
 
-export const PromotionCard: React.FC<PromotionCardProps> = ({ promotion, onPress }) => {
+export const PromotionCard: React.FC<PromotionCardProps> = ({
+  promotion,
+  onPress,
+  isFavorite = false,
+  onToggleFavorite,
+}) => {
   const { business, distance, discount_type, discount_value, special_offer_text, type } = promotion;
 
   // Get discount display text
@@ -63,9 +70,22 @@ export const PromotionCard: React.FC<PromotionCardProps> = ({ promotion, onPress
         <Text className="text-white text-xs font-bold">{badge.text}</Text>
       </View>
 
-      {/* Discount Badge */}
-      <View className="absolute top-3 right-3 bg-primary px-4 py-2 rounded-full">
-        <Text className="text-white text-lg font-bold">{getDiscountText()}</Text>
+      {/* Discount Badge and Favorite */}
+      <View className="absolute top-3 right-3 flex-row items-center">
+        {onToggleFavorite && (
+          <TouchableOpacity
+            onPress={(e: any) => {
+              e.stopPropagation();
+              onToggleFavorite();
+            }}
+            className="bg-white p-2 rounded-full shadow-lg mr-2"
+          >
+            <Text className="text-lg">{isFavorite ? '❤️' : '🤍'}</Text>
+          </TouchableOpacity>
+        )}
+        <View className="bg-primary px-4 py-2 rounded-full">
+          <Text className="text-white text-lg font-bold">{getDiscountText()}</Text>
+        </View>
       </View>
 
       {/* Content */}

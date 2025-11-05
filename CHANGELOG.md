@@ -8,13 +8,91 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
+- User profile and settings (Phase 4)
 - Merchant dashboard (Phase 5)
-- Loyalty programs (Phase 4)
 
 ### Planned Features
+- Loyalty programs
 - Payment integration with Stripe
 - Push notifications
 - Analytics dashboard
+
+---
+
+## [0.6.0] - 2025-11-05
+
+### Added - Phase 4 Part 1: Search, Filters & Favorites 🔍
+
+#### SearchFilters Component (286 lines)
+- 🔍 Real-time search bar with clear button
+- 🏛️ Filter modal with 3 sections:
+  * Categories (6 options: Restaurant, Retail, Services, Entertainment, Health, Beauty)
+  * Promotion Types (Weekly Special, Limited Time, Always On)
+  * Maximum Distance (1km, 3km, 5km, 10km, 25km)
+- 🏷️ Active filter pills with quick removal
+- 🔢 Filter counter badge
+- ♻️ Reset all filters button
+- 📱 Beautiful bottom sheet modal UI
+- ⚡ Auto-apply on selection
+
+#### Promotions Slice Enhancements
+- 📦 Added filters state (searchQuery, categories, types, maxDistance)
+- 🎯 applyFilters helper function:
+  * Search across title, business name, description, category
+  * Filter by multiple categories
+  * Filter by promotion types
+  * Filter by distance from user
+- 📄 filteredPromotions separate array
+- 🔄 Actions: setSearchQuery, toggleCategory, toggleType, setMaxDistance, resetFilters
+- ⚡ Auto-apply filters on data fetch
+
+#### Favorites Service (152 lines)
+- ❤️ addFavorite: Bookmark promotions
+- 🗑️ removeFavorite: Remove bookmarks
+- 📚 getFavorites: Fetch user's favorites with full details
+- ✔️ isFavorited: Check if promotion is favorited
+- 🎯 getFavoriteIds: Quick lookup array
+- 🚫 Duplicate prevention
+- 📈 Analytics tracking on favorite
+
+#### Database Migration
+- 📦 Created favorites table with unique constraint
+- 🔐 Row Level Security policies
+- 📊 Optimized indexes for performance
+- 🔗 Foreign keys to users and promotions
+
+#### PromotionCard Updates
+- ❤️/🤍 Favorite toggle button (filled/outlined heart)
+- 💆 Tap to favorite without navigating
+- 🔴 Visual feedback on favorite status
+- 📍 Positioned alongside discount badge
+
+#### MapScreen Integration
+- 🔍 Search bar at top of screen
+- 🏛️ Filter button with active count badge
+- 🎯 Uses filteredPromotions for markers
+- 📊 Live counter shows filtered results
+- 👀 Active filter pills below search
+- 📍 Markers update based on filters
+
+#### Features
+- Search promotions by keywords
+- Filter by category (restaurant, retail, etc.)
+- Filter by promotion type (weekly, limited, always on)
+- Filter by distance (1-25km radius)
+- Save favorite promotions
+- Quick access to favorites
+- Real-time search results
+- Multiple filters simultaneously
+- Filter pills for active filters
+- One-tap filter removal
+
+**Phase 4 Progress**: 50% Complete 🚀
+- ✅ Search and filters
+- ✅ Favorites/bookmarks
+- 🔄 User profile management
+- 🔄 Settings screen
+- 🔄 Sharing promotions
 
 ---
 

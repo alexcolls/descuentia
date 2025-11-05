@@ -9,22 +9,76 @@ export interface PromotionWithBusiness extends Promotion {
 
 interface PromotionsState {
   promotions: PromotionWithBusiness[];
+  filteredPromotions: PromotionWithBusiness[];
   featuredPromotions: PromotionWithBusiness[];
   selectedPromotion: PromotionWithBusiness | null;
   isLoading: boolean;
   error: string | null;
   userLocation: Coordinates | null;
   radiusKm: number;
+  filters: {
+    searchQuery: string;
+    categories: string[];
+    types: string[];
+    maxDistance: number;
+  };
 }
+
+/**
+ * Helper function to apply filters to promotions
+ */
+const applyFilters = (state: PromotionsState) => {
+  let filtered = [...state.promotions];
+
+  // Search query filter
+  if (state.filters.searchQuery) {
+    const query = state.filters.searchQuery.toLowerCase();
+    filtered = filtered.filter(
+      (promo) =>
+        promo.title.toLowerCase().includes(query) ||
+        promo.business.name.toLowerCase().includes(query) ||
+        promo.description?.toLowerCase().includes(query) ||
+        promo.business.category.toLowerCase().includes(query)
+    );
+  }
+
+  // Category filter
+  if (state.filters.categories.length > 0) {
+    filtered = filtered.filter((promo) =>
+      state.filters.categories.includes(promo.business.category)
+    );
+  }
+
+  // Type filter
+  if (state.filters.types.length > 0) {
+    filtered = filtered.filter((promo) =>
+      state.filters.types.includes(promo.type)
+    );
+  }
+
+  // Distance filter
+  filtered = filtered.filter(
+    (promo) => !promo.distance || promo.distance <= state.filters.maxDistance
+  );
+
+  state.filteredPromotions = filtered;
+};
 
 const initialState: PromotionsState = {
   promotions: [],
+  filteredPromotions: [],
   featuredPromotions: [],
   selectedPromotion: null,
   isLoading: false,
   error: null,
   userLocation: null,
   radiusKm: 2.0, // Default 2km radius
+  filters: {
+    searchQuery: '',
+    categories: [],
+    types: [],
+    maxDistance: 5,
+  },
 };
 
 /**
@@ -174,8 +228,49 @@ const promotionsSlice = createSlice({
     },
     clearPromotions: (state) => {
       state.promotions = [];
+      state.filteredPromotions = [];
       state.featuredPromotions = [];
       state.error = null;
+    },
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.filters.searchQuery = action.payload;
+      applyFilters(state);
+    },
+    toggleCategory: (state, action: PayloadAction<string>) => {
+      const category = action.payload;
+      const index = state.filters.categories.indexOf(category);
+      if (index > -1) {
+        state.filters.categories.splice(index, 1);
+      } else {
+        state.filters.categories.push(category);
+      }
+      applyFilters(state);
+    },
+    toggleType: (state, action: PayloadAction<string>) => {
+      const type = action.payload;
+      const index = state.filters.types.indexOf(type);
+      if (index > -1) {
+        state.filters.types.splice(index, 1);
+      } else {
+        state.filters.types.push(type);
+      }
+      applyFilters(state);
+    },
+    setMaxDistance: (state, action: PayloadAction<number>) => {
+      state.filters.maxDistance = action.payload;
+      applyFilters(state);
+    },
+    resetFilters: (state) => {
+      state.filters = {
+        searchQuery: '',
+        categories: [],
+        types: [],
+        maxDistance: 5,
+      };
+      applyFilters(state);
+    },
+    applyFiltersManually: (state) => {
+      applyFilters(state);
     },
   },
   extraReducers: (builder) => {
@@ -188,6 +283,7 @@ const promotionsSlice = createSlice({
       .addCase(fetchNearbyPromotions.fulfilled, (state, action) => {
         state.isLoading = false;
         state.promotions = action.payload;
+        applyFilters(state);
       })
       .addCase(fetchNearbyPromotions.rejected, (state, action) => {
         state.isLoading = false;
@@ -231,6 +327,12 @@ export const {
   setRadius,
   setSelectedPromotion,
   clearPromotions,
+  setSearchQuery,
+  toggleCategory,
+  toggleType,
+  setMaxDistance,
+  resetFilters,
+  applyFiltersManually,
 } = promotionsSlice.actions;
 
 export default promotionsSlice.reducer;
