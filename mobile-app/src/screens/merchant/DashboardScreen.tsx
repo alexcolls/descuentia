@@ -339,6 +339,29 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ navigation }) 
           </TouchableOpacity>
         </View>
 
+        {/* Loyalty Program */}
+        <View className="px-4 mb-6">
+          <Text className="text-lg font-bold text-gray-900 mb-3">
+            Loyalty Program
+          </Text>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('LoyaltyProgram')}
+            className="bg-white rounded-2xl shadow-md p-4 flex-row items-center justify-between"
+          >
+            <View className="flex-1">
+              <Text className="text-gray-900 font-semibold text-base mb-1">
+                Manage Loyalty Rewards
+              </Text>
+              <Text className="text-gray-600 text-sm">
+                Set up points and rewards for customers
+              </Text>
+            </View>
+            <View className="flex-row items-center">
+              <Ionicons name="chevron-forward" size={20} color="#9CA3AF" />
+            </View>
+          </TouchableOpacity>
+        </View>
+
         {/* Recent Activity */}
         <View className="px-4 mb-6">
           <Text className="text-lg font-bold text-gray-900 mb-3">
