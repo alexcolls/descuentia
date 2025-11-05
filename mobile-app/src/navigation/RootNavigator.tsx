@@ -9,10 +9,9 @@ import { View, ActivityIndicator, Text } from 'react-native';
 // Import screens
 import { LoginScreen } from '@screens/auth/LoginScreen';
 import { SignupScreen } from '@screens/auth/SignupScreen';
-import { MapScreen } from '@screens/consumer/MapScreen';
 import { PromotionDetailsScreen } from '@screens/consumer/PromotionDetailsScreen';
-import { CouponsScreen } from '@screens/consumer/CouponsScreen';
 import { CouponDetailScreen } from '@screens/consumer/CouponDetailScreen';
+import { ConsumerTabs } from '@navigation/ConsumerTabs';
 
 // Placeholder screens (to be created later)
 const MerchantDashboardScreen = () => (
@@ -85,9 +84,8 @@ export const RootNavigator: React.FC = () => {
         >
           {profile?.role === 'consumer' ? (
             <>
-              <Stack.Screen name="Map" component={MapScreen} />
+              <Stack.Screen name="ConsumerMain" component={ConsumerTabs} />
               <Stack.Screen name="PromotionDetails" component={PromotionDetailsScreen} />
-              <Stack.Screen name="Coupons" component={CouponsScreen} />
               <Stack.Screen name="CouponDetail" component={CouponDetailScreen} />
             </>
           ) : (

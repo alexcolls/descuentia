@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### In Progress
-- User profile and settings (Phase 4)
+- Promotion sharing (Phase 4)
 - Merchant dashboard (Phase 5)
 
 ### Planned Features
@@ -16,6 +16,75 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Payment integration with Stripe
 - Push notifications
 - Analytics dashboard
+
+---
+
+## [0.7.0] - 2025-11-05
+
+### Added - Phase 4 Part 2: Profile & Tab Navigation 👤
+
+#### ProfileScreen (321 lines)
+- 👤 User profile with avatar (first letter of name)
+- 📊 Stats cards showing:
+  * Active coupons count
+  * Redeemed offers count
+  * Total savings in euros
+- ✏️ Editable profile information:
+  * Full name (required)
+  * Phone number (optional)
+  * Email (read-only)
+  * Account type badge
+- 💾 Save/Cancel buttons with loading states
+- 🔗 Quick action links:
+  * My Coupons
+  * Favorites
+  * Settings
+- 📝 About section with mission statement
+- 💪 Version display
+- 🚪 Sign out with confirmation
+
+#### Bottom Tab Navigation (70 lines)
+- 🧭 ConsumerTabs navigator with 3 tabs:
+  * 🗺️ Discover (Map)
+  * 🎫 Coupons
+  * 👤 Profile
+- 🎨 Beautiful tab bar design:
+  * Primary color for active tabs
+  * Gray for inactive tabs
+  * Emoji icons for each tab
+  * Optimized height and padding
+- ⚡ Smooth tab switching
+- 📱 Mobile-optimized layout
+
+#### Navigation Updates
+- 🎯 ConsumerMain as tab container
+- 📱 Detail screens as modals over tabs
+- 🔗 Fixed navigation between tabs and screens
+- ♻️ Proper back navigation handling
+
+#### Profile Features
+- Edit profile inline
+- Real-time stats calculation
+- Savings estimation based on redeemed coupons
+- Profile data persistence
+- Form validation
+- Error handling with user feedback
+- Confirmation dialogs for destructive actions
+
+#### UI Enhancements
+- Gradient header with profile info
+- Stats cards with visual hierarchy
+- Clean section separation
+- Consistent spacing and typography
+- Responsive layout
+- Beautiful color scheme
+
+**Phase 4 Progress**: 90% Complete 🎆
+- ✅ Search and filters
+- ✅ Favorites/bookmarks
+- ✅ User profile management
+- ✅ Tab navigation
+- 🔄 Promotion sharing (final feature)
 
 ---
 

@@ -148,7 +148,7 @@ export const MapScreen: React.FC<MapScreenProps> = ({ navigation }) => {
           
           <View className="flex-row">
             <TouchableOpacity
-              onPress={() => navigation.navigate('Coupons')}
+              onPress={() => navigation.navigate('CouponsTab')}
               className="bg-gray-100 px-3 py-2 rounded-full mr-2"
             >
               <Text className="text-sm">🎫</Text>
