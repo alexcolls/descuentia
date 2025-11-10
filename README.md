@@ -98,8 +98,23 @@ Before starting, create accounts and obtain API keys for:
 git clone https://github.com/quantium/descuentia.git
 cd descuentia
 
-# See PRODUCTION_PLAN.md for detailed setup instructions
+# Install dependencies for all projects
+cd backend && npm install && cd ..
+cd website && npm install && cd ..
+cd mobile-app && npm install && cd ..
+
+# Start all dev servers at once
+./start.sh
 ```
+
+The `start.sh` script will start:
+- 📡 Backend API (http://localhost:3001)
+- 🌐 Website (http://localhost:3000)
+- 📱 Mobile App (Expo Dev Server)
+
+Press `Ctrl+C` to stop all servers.
+
+For detailed setup instructions, see [PRODUCTION_PLAN.md](./PRODUCTION_PLAN.md).
 
 ---
 

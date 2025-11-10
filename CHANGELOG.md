@@ -14,6 +14,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2025-11-10
+
+### Added
+- 🚀 **Development Server Launcher**: `start.sh` script to start all dev servers concurrently
+  - Starts backend API, website, and mobile app simultaneously
+  - Automatic dependency checking for all projects
+  - Color-coded console output for each server
+  - Graceful shutdown with Ctrl+C
+  - Clear error messages if dependencies are missing
+- 📝 **README Updates**: Added quick start instructions with `start.sh` usage
+
+---
+
 ## [1.0.0] - 2025-11-05
 
 ### 🎉 PRODUCTION RELEASE - Complete Platform Ready! 🎉
