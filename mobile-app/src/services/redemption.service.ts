@@ -1,4 +1,4 @@
-import { supabase } from './supabase.service';
+import { supabase } from './supabase';
 
 export interface RedemptionResult {
   success: boolean;

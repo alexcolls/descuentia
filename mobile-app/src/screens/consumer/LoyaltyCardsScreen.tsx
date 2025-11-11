@@ -11,7 +11,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { RootState } from '@store/store';
-import { supabase } from '@services/supabase.service';
+import { supabase } from '@services/supabase';
 import { Ionicons } from '@expo/vector-icons';
 
 interface LoyaltyCard {

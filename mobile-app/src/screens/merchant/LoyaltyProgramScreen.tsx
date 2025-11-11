@@ -12,7 +12,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { RootState } from '@store/store';
-import { supabase } from '@services/supabase.service';
+import { supabase } from '@services/supabase';
 import { Ionicons } from '@expo/vector-icons';
 
 interface LoyaltyProgram {
